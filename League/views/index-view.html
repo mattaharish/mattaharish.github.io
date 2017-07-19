@@ -1,0 +1,68 @@
+<section id="testimonial" class="section-padding">
+      <div class="container">
+        <div clas="row">
+          <a ng-href="#/statistics"><button class=" btn btn-primary">statistics</button></a>
+          <br />
+          Select Year
+          <select ng-model="myMatch.selectedYear" ng-options="x for x in myMatch.years">
+          </select>
+          <p>{{myMatch.selectedYear}}</p>
+          Select Score1
+          <select ng-model="myMatch.selectedScore1" ng-options="x for x in myMatch.scores1">
+          </select>
+          <p>{{myMatch.selectedScore1}}</p>
+          Select Score2
+          <select ng-model="myMatch.selectedScore2" ng-options="x for x in myMatch.scores2">
+          </select>
+          <p>{{myMatch.selectedScore2}}</p>
+          Select team
+          <select ng-model="myMatch.selectedTeam" ng-options="x for x in myMatch.teamsList">
+          </select>
+          <p>{{myMatch.selectedTeam}}</p>
+        </div>
+
+
+          <div ng-repeat="item in myMatch.games['rounds']">
+            <div >
+
+              <div class="text-comment" ng-repeat="item1 in item['matches'] | filter:{date:myMatch.selectedYear} | filter:{score1:myMatch.selectedScore1} | filter:{score2:myMatch.selectedScore2} | filter:myMatch.selectedTeam ">
+                  <a ng-href="#/2015-2016/{{item['name']}}/{{item1['team1'].name}}/{{item1['team2'].name}}/{{item1['score1']}}/{{item1['score2']}}/{{item1['date']}}"><p class="text-par">{{item1['team1'].name}} <span style="color:red">Vs</span> {{item1['team2'].name}}</p></a>
+                  <h4>
+                      Score By {{item1['team1'].name}} - <span style="color:red">{{item1['score1']}}</span>
+                  </h4>
+                  <h4>
+                      Score By {{item1['team2'].name}} - <span style="color:red">{{item1['score2']}}</span>
+                  </h4>
+                  <p class="text-name">{{item1['date']}}</p>
+              </div>
+
+            </div>
+            </div>
+            <div ng-repeat="item in myMatch.gamesNext['rounds']">
+              <div>
+                <div class="text-comment" ng-repeat="item1 in item['matches'] | filter:{date:myMatch.selectedYear} | filter:{score1:myMatch.selectedScore1} | filter:{score2:myMatch.selectedScore2} | filter:myMatch.selectedTeam">
+                  <div ng-if="item1['score1']!=null && item1['score2']!=null">
+                    <a ng-href="#/2016-2017/{{item['name']}}/{{item1['team1'].name}}/{{item1['team2'].name}}/{{item1['score1']}}/{{item1['score2']}}/{{item1['date']}}"><p class="text-par">{{item1['team1'].name}} <span style="color:red">Vs</span> {{item1['team2'].name}}</p></a>
+                  </div>
+                  <div ng-if="item1['score1']==null && item1['score2']==null">
+                    <a ng-href="#/2016-2017/{{item['name']}}/{{item1['team1'].name}}/{{item1['team2'].name}}/Null/Null/{{item1['date']}}"><p class="text-par">{{item1['team1'].name}} <span style="color:red">Vs</span> {{item1['team2'].name}}</p></a>
+                  </div>
+                    <h4 ng-if="item1['score1']!=null">
+                        Score By {{item1['team1'].name}} - <span  style="color:red">{{item1['score1']}}</span>
+                    </h4>
+                    <h4 ng-if="item1['score1']===null">
+                        Score By {{item1['team1'].name}} - <span  style="color:red">Null</span>
+                    </h4>
+                    <h4 ng-if="item1['score1']!=null">
+                        Score By {{item1['team2'].name}} - <span style="color:red">{{item1['score2']}}</span>
+                    </h4>
+                    <h4 ng-if="item1['score1']===null">
+                        Score By {{item1['team2'].name}} - <span style="color:red">Null</span>
+                    </h4>
+                    <p class="text-name">{{item1['date']}}</p>
+                </div>
+              </div>
+              </div>
+          </div>
+      </div>
+    </section>

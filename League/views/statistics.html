@@ -1,0 +1,25 @@
+<section id="testimonial" class="section-padding">
+      <div class="container">
+
+          <div ng-repeat="item in myMatch.teamsList">
+
+              <div class="text-comment">
+                  <h3><a><p class="text-par"> <span style="color:red">{{item}}</span></p></a></h3>
+                  <h4>
+                      Total Matches Played  - <span style="color:red">{{myMatch.matchCount[$index]}}</span>
+                  </h4>
+                  <h4>
+                      Number of Matches WON  - <span style="color:red">{{myMatch.wonCount[$index]}}</span>
+                  </h4>
+                  <h4>
+                      Number of Matches LOST  - <span style="color:red">{{myMatch.lostCount[$index]}}</span>
+                  </h4>
+                  <h4>
+                      Total Goals  - <span style="color:red">{{myMatch.totalGoals[$index]}}</span>
+                  </h4>
+              </div>
+              <br />
+
+            </div>
+            </div>
+    </section>

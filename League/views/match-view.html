@@ -1,0 +1,49 @@
+<section id="testimonial" class="section-padding">
+      <div class="container">
+        <center>
+          <h3><span style="color:white">{{mySingleMatch.matchDay}}</span></h3>
+        </center><br />
+
+        <h4><span style="color:white">Date of Match - <span style="color:yellow">{{mySingleMatch.date}}</span></h4>
+        <h4>
+          <span style="color:white">{{mySingleMatch.team1}}</span><span style="color:red"> Vs </span><span style="color:white">{{mySingleMatch.team2}}</span>
+        </h4>
+        <h4>
+          <span style="color:white">
+            Score By {{mySingleMatch.team1}} - <span style="color:red">{{mySingleMatch.score1}}</span>
+          </span>
+        </h4>
+        <h4>
+          <span style="color:white">
+            Score By {{mySingleMatch.team2}} - <span style="color:red">{{mySingleMatch.score2}}</span>
+          </span>
+        </h4>
+        <h3>
+          <span>
+            <center
+            <p style="color:green" ng-if="mySingleMatch.score1 > mySingleMatch.score2">
+            {{mySingleMatch.team1}}  Won Match
+            </p>
+          </span>
+          </span>
+        </h3>
+        <h3>
+          <span>
+            <center>
+            <p style="color:green" ng-if="mySingleMatch.score1 < mySingleMatch.score2">
+            {{mySingleMatch.team2}}  Won Match
+            </p>
+          </center>
+          </span>
+        </h3>
+        <h3>
+          <span>
+            <center>
+            <p style="color:green" ng-if="mySingleMatch.score1 == mySingleMatch.score2">
+              Draw Match
+            </p>
+          </center>
+          </span>
+        </h3>
+      </div>
+    </section>
