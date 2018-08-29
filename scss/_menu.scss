@@ -1,39 +1,37 @@
 // Menu Button
-
 .menu-btn {
   position: absolute;
   z-index: 3;
   right: 35px;
   top: 35px;
   cursor: pointer;
-
   @include easeOut;
 
   .btn-line {
     width: 28px;
     height: 3px;
     margin: 0 0 5px 0;
-    background: #ffffff;
+    background: set-text-color($primary-color);
     @include easeOut;
   }
 
-  // Rotate into X button
+  // Rotate Into X With Menu Lines
   &.close {
     transform: rotate(180deg);
 
     .btn-line {
-      // Line 1  - Rotate
+      // Line 1 - Rotate
       &:nth-child(1) {
-        background: #e5c212;
         transform: rotate(45deg) translate(5px, 5px);
       }
-      // Line 2  - Hide
+
+      // Line 2 - Hide
       &:nth-child(2) {
         opacity: 0;
       }
-      // Line 3  - Rotate
+
+      // Line 3 - Rotate
       &:nth-child(3) {
-        background: #e5c212;
         transform: rotate(-45deg) translate(7px, -6px);
       }
     }
@@ -67,34 +65,35 @@
   &-nav {
     margin: 0;
     padding: 0;
-    // background: darken($color: $primary-color, $amount: 5);
+    background: darken($primary-color, 5);
     list-style: none;
     transform: translate3d(0, -100%, 0);
     @include easeOut;
 
     &.show {
-      // Slide from top
+      // Slide in from top
       transform: translate3d(0, 0, 0);
     }
   }
 
-  // Branding
+  // Branding Side
   &-branding {
     background: $primary-color;
-    @include easeOut;
     transform: translate3d(0, 100%, 0);
+    @include easeOut;
 
     &.show {
-      // Slide from bottom
+      // Slide in from bottom
       transform: translate3d(0, 0, 0);
     }
 
     .portrait {
       width: 250px;
       height: 250px;
-      background: url("../img/pic-3.jpg");
+      background: url('../img/rsz_pic-3.jpg');
       border-radius: 50%;
       border: solid 3px $secondary-color;
+      z-index: -1; 
     }
   }
 
@@ -103,8 +102,35 @@
     @include easeOut;
 
     &.show {
-      // Slide from bottom
+      // Slide in from right
       transform: translate3d(0, 0, 0);
     }
+
+    &.current > a {
+      color: $secondary-color;
+    }
+  }
+
+  .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 300;
+    color: set-text-color($primary-color);
+    text-decoration: none;
+    @include easeOut;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+// Delay each nav item slide by 0.1s
+@for $x from 1 through 4 {
+  .nav-item:nth-child(#{$x}) {
+    transition-delay: $x * 0.1s;
   }
 }
